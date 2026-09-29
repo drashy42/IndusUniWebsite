@@ -1,4 +1,3 @@
-// models/Profile.js
 import mongoose from "mongoose";
 
 const ProfileSchema = new mongoose.Schema(
@@ -8,24 +7,42 @@ const ProfileSchema = new mongoose.Schema(
       ref: "User",
       required: true,
       unique: true,
+      index: true,
     },
 
     // Academic Identity
-    branch: String,
-    course: String,
-    year: String,
-    semester: String,
+    branch: {
+      type: String,
+      trim: true,
+    },
+    course: {
+      type: String,
+      trim: true,
+    },
+    year: {
+      type: String,
+      trim: true,
+    },
+    semester: {
+      type: String,
+      trim: true,
+    },
 
     // Preferences
-    goal: String,
+    goal: {
+      type: String,
+      trim: true,
+    },
 
     // Visibility
     visibility: {
       type: String,
+      enum: ["private", "public"],
       default: "private",
     },
   },
   { timestamps: true }
 );
 
-export default mongoose.models.Profiles || mongoose.model("Profiles", ProfileSchema);
+export default mongoose.models.Profile ||
+  mongoose.model("Profile", ProfileSchema);
