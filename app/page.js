@@ -1,7 +1,8 @@
 "use client";
 import Link from "next/link";
 
-const BRAND = "EduHub";
+const BRAND = process.env.NEXT_PUBLIC_WEBSITE_NAME || "IUHub";
+
 
 export default function Home() {
   return (
